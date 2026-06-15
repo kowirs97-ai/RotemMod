@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>RotemMod</title>
   
-  <a href="https://rotemmod.netlify.app/"><img src="RotemMod.png" alt="" width="100"></a>
+  <a href="https://rotemmod.netlify.app/"><img src="RotemMod.png" alt="" width="100"></a> <input type="text" id="searchBox" placeholder="Search...">
+<div id="hasil"></div>
+
   
   
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3004904466031473"
@@ -40,6 +42,8 @@
     }
   </style>
   
+ 
+  
   <style>
     body {
       background: black;
@@ -53,6 +57,43 @@
   <p></p>
   <a href="Mod/OneBlock/OneBlock.html" class="tombol"><img src="Mod/OneBlock/poto.png" alt="" width="300"><center><p>OneBlock</p></center></a>
   
+  <script>
+const data = [
+  {judul: "OneBlock", url: "/OneBlock.html", isi: "Wolrd  OneBlock one block dunia"},
+];
+
+const searchBox = document.getElementById('searchBox');
+const hasilDiv = document.getElementById('hasil');
+
+searchBox.addEventListener('input', function() {
+  const keyword = this.value.toLowerCase();
+  hasilDiv.innerHTML = '';
+  
+  if(keyword.length < 2) return; // minimal 2 huruf baru cari
+  
+  const hasil = data.filter(item => 
+    item.judul.toLowerCase().includes(keyword) || 
+    item.isi.toLowerCase().includes(keyword)
+  );
+  
+  hasil.forEach(item => {
+    hasilDiv.innerHTML += `<p><a href="${item.url}">${item.judul}</a></p>`;
+  });
+});
+</script>
+
+<style>
+  #hasil {
+    color: white;
+  }
+  #hasil a {
+    color: white;
+    text-decoration: none;
+  }
+  #hasil a:hover {
+    text-decoration: inline-block;
+  }
+</style>
   
 </body>
 </html>
